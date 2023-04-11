@@ -8,15 +8,13 @@ import Cart from "../cart/index";
 import * as Styles from "./styles";
 
 // Utilities
-import { loginUser, logoutUser } from "../../redux/user/actions";
-import { useMemo } from "react";
+import { login, logout } from "../../redux/user/slice";
 import { selectProductsCount } from "../../redux/cart/cart-selectors";
 
 function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  const { products } = useSelector((rootReducer) => rootReducer.cartReducer);
   
   const productsCount = useSelector(selectProductsCount)
   
@@ -28,7 +26,7 @@ function Header() {
 
   const handleLoginClick = () => {
     dispatch(
-      loginUser({
+      login({
         name: "John Doe",
         email: "example@gmail.com",
       })
@@ -36,7 +34,7 @@ function Header() {
   };
 
   const handleLogoutClick = () => {
-    dispatch(logoutUser());
+    dispatch(logout());
   };
 
   return (

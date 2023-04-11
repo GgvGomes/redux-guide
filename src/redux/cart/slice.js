@@ -27,7 +27,7 @@ const cartSlice = createSlice({
         },
 
         removeProductsFromCart: (state, action) => {
-            state.products = state.products.filter(products => products.id != action.payload)
+            state.products = state.products.filter(products => products.id !== action.payload)
         },
 
         decreaseProductQuantity: (state, action) => {
